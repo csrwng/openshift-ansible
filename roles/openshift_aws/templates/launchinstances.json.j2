@@ -1,0 +1,39 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+	{
+	    "Action": [
+		"ec2:DescribeAvailabilityZones",
+		"ec2:DescribeImages",
+		"ec2:DescribeInstances",
+		"ec2:DescribeKeyPairs",
+		"ec2:DescribeSecurityGroups",
+		"ec2:RunInstances",
+		"ec2:StartInstances",
+		"ec2:DescribeInstances",
+		"ec2:CreateVolume",
+		"ec2:AttachVolume",
+		"ec2:DetachVolume"
+	    ],
+	    "Resource": [
+		"*"
+	    ],
+	    "Effect": "Allow"
+	},
+	{
+	    "Action": [
+		"ec2:StopInstances",
+		"ec2:TerminateInstances",
+	    ],
+	    "Resource": [
+		"*"
+	    ],
+	    "Condition": {
+		"StringEquals": {
+		    "ec2:ResourceTag/clusterid": "{{ openshift_aws_clusterid }}"
+		}
+	    },
+	    "Effect": "Allow"
+	}
+    ]
+}
