@@ -35,6 +35,15 @@
 		}
 	    },
 	    "Effect": "Allow"
-	}
+	},
+        {
+	    "Action": [
+		"iam:PassRole"
+	    ],
+	    "Resource": [
+		"arn:aws:iam::531415883065:role/openshift_node_describe_instances"
+	    ],
+	    "Effect": "Allow"
+        }
     ]
 }
